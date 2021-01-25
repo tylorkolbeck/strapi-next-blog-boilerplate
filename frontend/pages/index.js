@@ -3,7 +3,6 @@ import Articles from '../components/articles'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { fetchAPI } from '../lib/api'
-import qs from 'qs'
 
 const Home = ({ articles, categories, homepage }) => {
   return (
