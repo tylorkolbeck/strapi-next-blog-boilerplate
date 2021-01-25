@@ -3,7 +3,6 @@ import Articles from '../components/articles'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { fetchAPI } from '../lib/api'
-import qs from 'qs'
 
 const Home = ({ articles, categories, homepage }) => {
   return (
@@ -22,7 +21,7 @@ const Home = ({ articles, categories, homepage }) => {
 export async function getStaticProps() {
   // Run API calls in parallel
   const [articles, categories, homepage] = await Promise.all([
-    fetchAPI('/articles?status=published'),
+    fetchAPI('/articles'),
     fetchAPI('/categories'),
     fetchAPI('/homepage')
   ])

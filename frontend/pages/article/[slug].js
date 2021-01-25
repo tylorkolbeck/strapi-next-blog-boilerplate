@@ -7,6 +7,7 @@ import Seo from '../../components/seo'
 import { getStrapiMedia } from '../../lib/media'
 
 const Article = ({ article, categories }) => {
+  console.log(article)
   const imageUrl = getStrapiMedia(article.image)
 
   const seo = {
@@ -74,15 +75,27 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const articles = await fetchAPI(
-    `/articles?slug=${params.slug}&status=published`
-  )
+  const article = await await fetchAPI(`/articles/${params.slug}`)
   const categories = await fetchAPI('/categories')
 
+  console.log('>>>>>', article)
+
   return {
-    props: { article: articles[0], categories },
+    props: {
+      article,
+      categories
+    },
     revalidate: 1
   }
+
+  // const articles = await fetchAPI(`/article/${params.slug}`)
+  // console.log('>>>>>', articles)
+  // const categories = await fetchAPI('/categories')
+
+  // return {
+  //   props: { article: articles[0], categories },
+  //   revalidate: 1
+  // }
 }
 
 export default Article

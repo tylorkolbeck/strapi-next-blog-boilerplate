@@ -14,6 +14,9 @@ const Card = ({ article }) => {
             <p id='category' className='uk-text-uppercase'>
               {article.category.name}
             </p>
+            <span style={{ color: 'dodgerblue' }}>
+              {article.premium ? 'Premium' : ''}
+            </span>
             <p id='title' className='uk-text-large'>
               {article.title}
             </p>
